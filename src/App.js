@@ -1,18 +1,56 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { getTableData } from "./api";
+import Section from "./Section";
 
 class App extends Component {
+  state = {
+    sections: []
+  };
+
+  componentDidMount() {
+    const { headers, products } = getTableData();
+    this.setState({
+      sections: [
+        {
+          isFetched: false,
+          headers: headers,
+          products: products
+        }
+      ]
+    });
+  }
+
+  addSection = () => {
+    const newSectionsData = [
+      ...this.state.sections,
+      { isFetched: false, headers: [], products: [] }
+    ];
+    this.setState({ sections: newSectionsData });
+  };
+
+  handleSectionData = size => {
+    const { headers, products } = getTableData(size);
+    const sectionData = { isFetched: true, headers, products };
+    const newSectionsData = [...this.state.sections.slice(0, -1), sectionData];
+    this.setState({ sections: newSectionsData });
+  };
+
   render() {
+    const { sections } = this.state;
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div>
+          <button onClick={this.addSection}>Добавить набор</button>
+        </div>
+        {sections.map((section, index) => (
+          <Section
+            key={index}
+            isFetched={section.isFetched}
+            headers={section.headers}
+            products={section.products}
+            onSetSectionData={size => this.handleSectionData(size)}
+          />
+        ))}
       </div>
     );
   }
