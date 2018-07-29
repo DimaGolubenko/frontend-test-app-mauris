@@ -1,6 +1,10 @@
 import React, { Fragment } from "react";
 
-const Toggle = ({ children, onClick }) => <td onClick={onClick}>{children}</td>;
+const Toggle = ({ children, onClick }) => (
+  <td className="table-cell" onClick={onClick}>
+    {children}
+  </td>
+);
 
 const Head = ({ setSortBy, sortBy, direction, toggleDirection, headers }) => {
   const headersJSX = Object.keys(headers).map((key, index) => {

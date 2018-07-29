@@ -8,7 +8,7 @@ const SelectedRow = ({ selectedRow }) => {
     : null;
   return (
     <tbody>
-      <tr>{rowJSX}</tr>
+      <tr className="table__selected-row">{rowJSX}</tr>
     </tbody>
   );
 };

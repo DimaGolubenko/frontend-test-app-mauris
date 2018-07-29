@@ -7,24 +7,44 @@ const Navigation = ({ activePage, goToPage, nextPage, prevPage, pages }) => {
   const isLastPage = activePage === lastPage;
 
   const numbersJSX = [...Array(pages).keys()].map(num => (
-    <button key={num} onClick={() => goToPage(num)}>
+    <button
+      className="page-navigation__btn"
+      key={num}
+      onClick={() => goToPage(num)}
+    >
       {num + 1}
     </button>
   ));
 
   return (
-    <div>
-      <button disabled={isFirstPage} onClick={() => goToPage(firstPage)}>
+    <div className="page-navigation">
+      <button
+        className="page-navigation__btn"
+        disabled={isFirstPage}
+        onClick={() => goToPage(firstPage)}
+      >
         {"<<"}
       </button>
-      <button disabled={isFirstPage} onClick={prevPage}>
+      <button
+        className="page-navigation__btn"
+        disabled={isFirstPage}
+        onClick={prevPage}
+      >
         {"<"}
       </button>
-      {numbersJSX}
-      <button disabled={isLastPage} onClick={nextPage}>
+      <span className="page-navigation__numbers">{numbersJSX}</span>
+      <button
+        className="page-navigation__btn"
+        disabled={isLastPage}
+        onClick={nextPage}
+      >
         {">"}
       </button>
-      <button disabled={isLastPage} onClick={() => goToPage(lastPage)}>
+      <button
+        className="page-navigation__btn"
+        disabled={isLastPage}
+        onClick={() => goToPage(lastPage)}
+      >
         {">>"}
       </button>
     </div>

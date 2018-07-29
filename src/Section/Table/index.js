@@ -13,7 +13,7 @@ export default class Table extends Component {
     direction: "asc",
     activePage: 0,
     searchQuery: "",
-    itemsPerPage: 10,
+    itemsPerPage: 25,
     selectedRow: null
   };
 
@@ -63,51 +63,53 @@ export default class Table extends Component {
     const { headers, products } = this.props;
 
     return (
-      <Datasort
-        data={products}
-        sortBy={sortBy}
-        direction={direction}
-        activePage={activePage}
-        searchQuery={searchQuery}
-        paginate
-        itemsPerPage={itemsPerPage}
-        render={({ data, pages }) => (
-          <div>
-            <Search
-              searchQuery={searchQuery}
-              onSearchQuery={query => this.handleSearchQuery(query)}
-            />
-            <table>
-              <Head
-                setSortBy={this.setSortBy}
-                sortBy={sortBy}
-                direction={direction}
-                toggleDirection={this.toggleDirection}
-                headers={headers}
+      <section className="section-table">
+        <Datasort
+          data={products}
+          sortBy={sortBy}
+          direction={direction}
+          activePage={activePage}
+          searchQuery={searchQuery}
+          paginate
+          itemsPerPage={itemsPerPage}
+          render={({ data, pages }) => (
+            <div>
+              <Search
+                searchQuery={searchQuery}
+                onSearchQuery={query => this.handleSearchQuery(query)}
               />
-              <Body
-                products={data}
-                onSelectRow={product => this.handleSelectRow(product)}
+              <table className="section-table">
+                <Head
+                  setSortBy={this.setSortBy}
+                  sortBy={sortBy}
+                  direction={direction}
+                  toggleDirection={this.toggleDirection}
+                  headers={headers}
+                />
+                <Body
+                  products={data}
+                  onSelectRow={product => this.handleSelectRow(product)}
+                />
+                <SelectedRow selectedRow={selectedRow} />
+              </table>
+              <PageIndicator pages={pages} activePage={activePage} />
+              <Navigation
+                activePage={activePage}
+                goToPage={this.goToPage}
+                nextPage={this.nextPage}
+                prevPage={this.prevPage}
+                pages={pages}
               />
-              <SelectedRow selectedRow={selectedRow} />
-            </table>
-            <PageIndicator pages={pages} activePage={activePage} />
-            <Navigation
-              activePage={activePage}
-              goToPage={this.goToPage}
-              nextPage={this.nextPage}
-              prevPage={this.prevPage}
-              pages={pages}
-            />
-          </div>
-        )}
-      />
+            </div>
+          )}
+        />
+      </section>
     );
   }
 }
 
 const PageIndicator = ({ pages, activePage }) => (
-  <div>
-    <b>{activePage + 1}</b> / {pages}
+  <div className="page-indicator">
+    Страница <b>{activePage + 1}</b> из {pages}
   </div>
 );

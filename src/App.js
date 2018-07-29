@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { getTableData } from "./api";
+
+import "./App.css";
 import Section from "./Section";
 
 class App extends Component {
@@ -38,9 +40,11 @@ class App extends Component {
   render() {
     const { sections } = this.state;
     return (
-      <div className="App">
-        <div>
-          <button onClick={this.addSection}>Добавить набор</button>
+      <div className="app">
+        <div className="add-data">
+          <button className="add-data__btn" onClick={this.addSection}>
+            Добавить набор
+          </button>
         </div>
         {sections.map((section, index) => (
           <Section

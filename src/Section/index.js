@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getDataCount } from "../api.js";
+import "./Section.css";
 
 import Select from "./Select";
 import Table from "./Table";
@@ -29,7 +30,7 @@ export default class Section extends Component {
     const { customTableSize } = this.state;
 
     return (
-      <div>
+      <div className="section">
         {!isFetched ? (
           <Select
             onGetSectionData={size => this.handleGetSectionData(size)}

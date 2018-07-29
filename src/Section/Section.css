@@ -1,0 +1,46 @@
+.section {
+  margin: 25px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.section-select__title {
+  font-weight: bold;
+}
+
+.section-select__row {
+  margin: 10px 0;
+}
+
+.section-select__btn {
+  margin: 0 2px;
+}
+
+.section-search {
+  margin-bottom: 10px;
+}
+
+.section-table {
+  border-collapse: collapse;
+}
+
+.table-cell {
+  border: 1px solid #ccc;
+}
+
+.page-indicator {
+  padding: 10px 0;
+}
+
+.page-navigation__numbers {
+  margin: 0 10px;
+}
+
+.page-navigation__btn {
+  margin: 0 2px;
+}
+
+.table__selected-row {
+  background-color: #ccc;
+  font-weight: bold;
+}
