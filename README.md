@@ -1,6 +1,7 @@
 ### Preface
 
 In this repository I pushing my realization of test React app on frontend developer position in Mauris company.
+Deployed app: https://build-tcqfmyyrae.now.sh/
 
 ### Test description (in original language)
 
